@@ -1,0 +1,72 @@
+* {
+    max-width: 850px;
+    margin: auto;
+}
+
+/*#header {
+    height: 30px;
+    width: 100%;
+    background-color: #99ddff;
+    position: fixed;
+    z-index: 1;
+}*/
+
+.resume-body {
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+/*.title-row {
+        margin-top: 40px;
+}*/
+
+.column-left {
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.column-right {
+    float: left;
+    width: 50%;
+    text-align: right;
+}
+
+.column-right-la {
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.title-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+div {
+    border-radius: 10px;
+}
+
+.content {
+    display: inline-block;
+}
+
+h1,h2 {
+    font-family: Georgia, serif;
+}
+
+h3 {
+    font-family: Georgia, serif;
+    margin-bottom: 5px;
+}
+
+.job-subheading {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.bottom-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
