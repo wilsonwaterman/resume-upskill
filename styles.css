@@ -1,5 +1,5 @@
 * {
-    max-width: 850px;
+    /*max-width: 950px;*/
     margin: auto;
 }
 
@@ -8,16 +8,22 @@
     width: 100%;
     background-color: #99ddff;
     position: fixed;
-    z-index: 1;
+    z-index: -1;
 }*/
+
+.background-effect {
+    background-color: #99ddff;
+    max-width: 950px;
+    position: relative;
+}
 
 .resume-body {
     font-family: Tahoma, Arial, sans-serif;
+    border: 1px solid black;
+    max-width: 850px;
+    background-color: white;
+    top: 50px;
 }
-
-/*.title-row {
-        margin-top: 40px;
-}*/
 
 .column-left {
     float: left;
