@@ -14,13 +14,23 @@ jobs:
     - name: Checkout Web Code
       uses: actions/checkout@v3
 
-    - name: Deploy Resume to s3
-      uses: dvelasquez/deploy-s3-action@main
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1.6.1
       with:
-        AWS_ACCESS_KEY_id: ${{secrets.AWS_ACCESS_KEY}}
-        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
-        AWS_BUCKET_NAME: ${{secrets.WEBSITE_BUCKET_NAME}}
-        DIST_LOCATION_CODE: ./webpage
+        aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
+        aws-secret-access-key: ${{secrets.AWS_SECRET_KEY}}
+        aws-region: us-west-2
+
+    - name: Deploy Resume files to s3
+      run: aws s3 sync webpage s3://${{secrets.WEBSITE_BUCKET_NAME}} --delete
+    
+    # - name: Deploy Resume to s3
+    #   uses: dvelasquez/deploy-s3-action@main
+    #   with:
+    #     AWS_ACCESS_KEY_id: ${{secrets.AWS_ACCESS_KEY}}
+    #     AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
+    #     AWS_BUCKET_NAME: ${{secrets.WEBSITE_BUCKET_NAME}}
+    #     DIST_LOCATION_CODE: ./webpage
 
     
     # - name: Deploy Resume to s3
@@ -30,12 +40,5 @@ jobs:
     #     aws_secret_access_key: ${{secrets.AWS_SECRET_KEY}}
     #     aws_bucket: ${{secrets.WEBSITE_BUCKET_NAME}}
     #     source_dir: webpage
-
-    # - name: Configure AWS Credentials
-    #   uses: aws-actions/configure-aws-credentials@v1.6.1
-    #   with:
-    #     aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
-    #     aws-secret-access-key: ${{secrets.AWS_SECRET_KEY}}
-    #     aws-region: us-west-2
 
     
