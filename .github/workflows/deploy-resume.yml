@@ -15,12 +15,21 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Deploy Resume to s3
-      uses: shallwefootball/s3-upload-action@master
+      uses: dvelasquez/deploy-s3-action@main
       with:
-        aws_key_id: ${{secrets.AWS_ACCESS_KEY}}
-        aws_secret_access_key: ${{secrets.AWS_SECRET_KEY}}
-        aws_bucket: ${{secrets.WEBSITE_BUCKET_NAME}}
-        source_dir: webpage
+        AWS_ACCESS_KEY_id: ${{secrets.AWS_ACCESS_KEY}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
+        AWS_BUCKET_NAME: ${{secrets.WEBSITE_BUCKET_NAME}}
+        DIST_LOCATION_CODE: ./webpage
+
+    
+    # - name: Deploy Resume to s3
+    #   uses: shallwefootball/s3-upload-action@master
+    #   with:
+    #     aws_key_id: ${{secrets.AWS_ACCESS_KEY}}
+    #     aws_secret_access_key: ${{secrets.AWS_SECRET_KEY}}
+    #     aws_bucket: ${{secrets.WEBSITE_BUCKET_NAME}}
+    #     source_dir: webpage
 
     # - name: Configure AWS Credentials
     #   uses: aws-actions/configure-aws-credentials@v1.6.1
