@@ -1,0 +1,67 @@
+variable "BUCKET_NAME" {
+}
+
+data "aws_iam_policy_document" "allow-object-access" {
+    version         = "2012-10-17"
+    statement {
+        sid         = "PublicReadGetObject"
+        effect      = "Allow"
+        principals {
+            type        = "*"
+            identifiers = ["*"]
+        }
+        actions     = [
+            "s3:GetObject"
+        ]
+        resources   = [
+            "${aws_s3_bucket.bucket.arn}/*"
+         #  "arn:aws:s3:::${var.BUCKET_NAME}/*"
+        ]
+    }
+}
+
+resource "aws_s3_bucket" "bucket" {
+    bucket          = var.BUCKET_NAME
+    force_destroy   = true
+}
+
+resource "aws_s3_bucket_ownership_controls" "owner-controls" {
+    bucket                  = aws_s3_bucket.bucket.id
+    rule {
+        object_ownership    = "BucketOwnerPreferred"
+    }          
+}
+
+resource "aws_s3_bucket_public_access_block" "bucket-access-settings" {
+    bucket                  = aws_s3_bucket.bucket.id
+    block_public_acls       = false
+    block_public_policy     = false
+    ignore_public_acls      = false
+    restrict_public_buckets = false
+}
+
+# change below resource to allow allow allUser read to Bucket ACL (grant/grantee)
+# If permission still denied for adding bucket policy, update the associated permission to allow for that to happen
+resource "aws_s3_bucket_acl" "bucket-acl-settings" {
+    depends_on      = [
+        aws_s3_bucket_ownership_controls.owner-controls,
+        aws_s3_bucket_public_access_block.bucket-access-settings,
+    ]
+
+    bucket          = aws_s3_bucket.bucket.id
+    acl             = "public-read"
+}
+
+resource "aws_s3_bucket_policy" "allow-access-to-public" {
+    bucket          = aws_s3_bucket.bucket.id
+    policy          = data.aws_iam_policy_document.allow-object-access.json
+}
+
+resource "aws_s3_bucket_website_configuration" "web-config" {
+    bucket          = aws_s3_bucket.bucket.id
+
+    index_document {
+        suffix      = "index.html"
+    }
+}
+
