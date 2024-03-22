@@ -20,6 +20,8 @@ data "aws_iam_policy_document" "allow-object-access" {
     }
 }
 
+data "aws_canonical_user_id" "current" {}
+
 resource "aws_s3_bucket" "bucket" {
     bucket          = var.BUCKET_NAME
     force_destroy   = true
@@ -40,16 +42,34 @@ resource "aws_s3_bucket_public_access_block" "bucket-access-settings" {
     restrict_public_buckets = false
 }
 
-# change below resource to allow allow allUser read to Bucket ACL (grant/grantee)
-# If permission still denied for adding bucket policy, update the associated permission to allow for that to happen
 resource "aws_s3_bucket_acl" "bucket-acl-settings" {
-    depends_on      = [
+    depends_on          = [
         aws_s3_bucket_ownership_controls.owner-controls,
         aws_s3_bucket_public_access_block.bucket-access-settings,
     ]
 
-    bucket          = aws_s3_bucket.bucket.id
-    acl             = "public-read"
+    bucket              = aws_s3_bucket.bucket.id
+    access_control_policy {
+        grant {
+            grantee {
+                id      = data.aws_canonical_user_id.current.id
+                type    = "CanonicalUser"
+            }
+            permission  = "FULL_CONTROL"
+        }
+
+        grant {
+            grantee {
+                type    = "Group"
+                uri     = "http://acs.amazonaws.com/groups/global/AllUsers"
+            }
+            permission  = "READ_ACP"
+        }
+
+        owner {
+            id          = data.aws_canonical_user_id.current.id
+        }
+    }
 }
 
 resource "aws_s3_bucket_policy" "allow-access-to-public" {
