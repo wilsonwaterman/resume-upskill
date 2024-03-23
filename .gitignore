@@ -1,0 +1,14 @@
+secrets/
+__pycache__
+.DS_Store
+.terraform
+.terraform.lock.hcl
+terraform.tfstate*
+.hcl
+.tfstate
+.backup
+*.tfvars
+.tfplan
+*.pub
+*.ppk
+*_ips.txt
