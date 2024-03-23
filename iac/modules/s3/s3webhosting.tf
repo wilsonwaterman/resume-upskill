@@ -73,6 +73,11 @@ resource "aws_s3_bucket_acl" "bucket-acl-settings" {
 }
 
 resource "aws_s3_bucket_policy" "allow-access-to-public" {
+    # This needs to be applied after the bucket ACL is set
+    depends_on      = [
+        aws_s3_bucket_acl.bucket-acl-settings,
+    ]
+
     bucket          = aws_s3_bucket.bucket.id
     policy          = data.aws_iam_policy_document.allow-object-access.json
 }
