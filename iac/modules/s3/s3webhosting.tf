@@ -2,21 +2,28 @@ variable "BUCKET_NAME" {
 }
 
 data "aws_iam_policy_document" "allow-object-access" {
-    version         = "2012-10-17"
+    version             = "2008-10-17"
     statement {
-        sid         = "PublicReadGetObject"
-        effect      = "Allow"
+        sid             = "AllowCloudFrontServicePrincipal"
+        effect          = "Allow"
         principals {
-            type        = "*"
-            identifiers = ["*"]
+            type        = "Service"
+            identifiers = ["cloudfront.amazonaws.com"]
         }
-        actions     = [
+        actions         = [
             "s3:GetObject"
         ]
-        resources   = [
+        resources       = [
             "${aws_s3_bucket.bucket.arn}/*"
-         #  "arn:aws:s3:::${var.BUCKET_NAME}/*"
         ]
+
+        # Update condition value after cloudfront terraform code is completed
+        condition {
+            test        = "ForAnyValue:StringEquals"
+            variable    = "AWS:SourceArn"
+            values      = ["test"]
+
+        }
     }
 }
 
@@ -38,8 +45,8 @@ resource "aws_s3_bucket_public_access_block" "bucket-access-settings" {
     bucket                  = aws_s3_bucket.bucket.id
     block_public_acls       = false
     block_public_policy     = false
-    ignore_public_acls      = false
-    restrict_public_buckets = false
+    ignore_public_acls      = true
+    restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_acl" "bucket-acl-settings" {
@@ -56,14 +63,6 @@ resource "aws_s3_bucket_acl" "bucket-acl-settings" {
                 type    = "CanonicalUser"
             }
             permission  = "FULL_CONTROL"
-        }
-
-        grant {
-            grantee {
-                type    = "Group"
-                uri     = "http://acs.amazonaws.com/groups/global/AllUsers"
-            }
-            permission  = "READ_ACP"
         }
 
         owner {
