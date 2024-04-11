@@ -1,7 +1,7 @@
 variable "BUCKET_NAME" {
 }
 
-variable "DOMAIN" {
+variable "BUCKET_DOMAIN" {
 }
 
 variable "ACM_ARN" {
@@ -20,7 +20,7 @@ resource "aws_cloudfront_origin_access_control" "default-cloudfront-oac" {
 
 resource "aws_cloudfront_distribution" "site-host-distro" {
     origin {
-        domain_name                     = var.DOMAIN
+        domain_name                     = var.BUCKET_DOMAIN
         origin_access_control_id        = aws_cloudfront_origin_access_control.default-cloudfront-oac.id
         origin_id                       = local.s3_origin_id
     }

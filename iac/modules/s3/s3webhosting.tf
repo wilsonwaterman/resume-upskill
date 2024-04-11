@@ -89,7 +89,11 @@ resource "aws_s3_bucket_website_configuration" "web-config" {
     }
 }
 
-output "bucket-name" {
+output "BUCKET_NAME" {
     value           = aws_s3_bucket.bucket.bucket
+}
+
+output "BUCKET_DOMAIN" {
+    value           = aws_s3_bucket.bucket.bucket_regional_domain_name
 }
 
