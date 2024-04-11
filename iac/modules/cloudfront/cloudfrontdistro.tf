@@ -28,17 +28,11 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
     is_ipv6_enabled                     = true
 
     default_cache_behavior {
+        # Add cache policy by id
+        cache_policy_id                 = "658327ea-f89d-4fab-a63d-7e88639e58f6"
         allowed_methods                 = ["GET","HEAD"]
         cached_methods                  = ["GET","HEAD"]
         target_origin_id                = var.BUCKET_NAME
-
-        forwarded_values {
-            query_string                = false
-
-            cookies {
-                forward                 = "none"
-            }
-        }
 
         viewer_protocol_policy          = "allow-all"
         min_ttl                         = 0
@@ -62,6 +56,7 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
     viewer_certificate {
         acm_certificate_arn             = var.ACM_ARN
         ssl_support_method              = "sni-only"
+        minimum_protocol_version        = "TLSv1.2_2021"
     }
 
 }
