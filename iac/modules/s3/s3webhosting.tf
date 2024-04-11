@@ -1,6 +1,9 @@
 variable "BUCKET_NAME" {
 }
 
+variable "CF_ARN" {
+}
+
 data "aws_iam_policy_document" "allow-object-access" {
     version             = "2008-10-17"
     statement {
@@ -21,7 +24,7 @@ data "aws_iam_policy_document" "allow-object-access" {
         condition {
             test        = "ForAnyValue:StringEquals"
             variable    = "AWS:SourceArn"
-            values      = ["test"]
+            values      = ["${var.CF_ARN}"]
 
         }
     }

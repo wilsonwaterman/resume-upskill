@@ -7,8 +7,7 @@ variable "BUCKET_DOMAIN" {
 variable "ACM_ARN" {
 }
 
-locals {
-    s3_origin_id                        = "myS3Origin"
+variable "ENV" {
 }
 
 resource "aws_cloudfront_origin_access_control" "default-cloudfront-oac" {
@@ -22,7 +21,7 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
     origin {
         domain_name                     = var.BUCKET_DOMAIN
         origin_access_control_id        = aws_cloudfront_origin_access_control.default-cloudfront-oac.id
-        origin_id                       = local.s3_origin_id
+        origin_id                       = var.BUCKET_NAME
     }
 
     enabled                             = true
@@ -31,7 +30,7 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
     default_cache_behavior {
         allowed_methods                 = ["GET","HEAD"]
         cached_methods                  = ["GET","HEAD"]
-        target_origin_id                = local.s3_origin_id
+        target_origin_id                = var.BUCKET_NAME
 
         forwarded_values {
             query_string                = false
@@ -57,7 +56,7 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
     }
 
     tags = {
-        Environment                     = "production"
+        Environment                     = var.ENV
     }
 
     viewer_certificate {
@@ -65,4 +64,8 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
         ssl_support_method              = "sni-only"
     }
 
+}
+
+output "CF_ARN" {
+    value                               = aws_cloudfront_distribution.site-host-distro.arn
 }
