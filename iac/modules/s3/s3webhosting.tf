@@ -89,3 +89,7 @@ resource "aws_s3_bucket_website_configuration" "web-config" {
     }
 }
 
+output "bucket-name" {
+    value           = aws_s3_bucket.bucket.bucket
+}
+
