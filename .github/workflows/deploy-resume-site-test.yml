@@ -1,4 +1,4 @@
-name: Deploy Resume to s3
+name: Deploy Resume Website to Test
 
 on:
   workflow_dispatch:
@@ -19,5 +19,5 @@ jobs:
         aws-region: us-west-2
 
     - name: Deploy Resume files to s3
-      run: aws s3 sync webpage s3://${{secrets.WEBSITE_BUCKET_NAME}} --delete
+      run: aws s3 sync webpage s3://${{secrets.WEBSITE_BUCKET_NAME_TEST}} --delete
     
