@@ -1,9 +1,7 @@
 name: Deploy Resume Website to Test
 
 on:
-  push:
-    branches: ["create-action-for-test-env"]
-      
+
   workflow_dispatch:
 
 jobs:
