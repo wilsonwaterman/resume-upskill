@@ -9,3 +9,7 @@ variable "BUCKET_NAME" {
 variable "ACM_TEST_ARN" {
     default = "arn:aws:acm:us-east-1:649148530717:certificate/d5f8829f-79f4-48de-9fb5-2b2207a13e61"
 }
+
+variable "WEBSITE_DOMAIN" {
+    default = "test.wilsonwaterman.com"
+}

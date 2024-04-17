@@ -10,6 +10,9 @@ variable "ACM_ARN" {
 variable "ENV" {
 }
 
+variable "SITE_DOMAIN" {
+}
+
 resource "aws_cloudfront_origin_access_control" "default-cloudfront-oac" {
     name                                = "s3-OAC"
     origin_access_control_origin_type   = "s3"
@@ -26,6 +29,9 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
 
     enabled                             = true
     is_ipv6_enabled                     = true
+    default_root_object                 = "index.html"
+
+    aliases = ["${var.SITE_DOMAIN}"]
 
     default_cache_behavior {
         # Add cache policy by id
