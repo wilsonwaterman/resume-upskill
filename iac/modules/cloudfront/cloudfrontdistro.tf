@@ -29,6 +29,7 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
 
     enabled                             = true
     is_ipv6_enabled                     = true
+    default_root_object                 = "index.html"
 
     aliases = ["${var.SITE_DOMAIN}"]
 
