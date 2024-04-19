@@ -12,3 +12,11 @@ module "cloudfront-distro" {
     SITE_DOMAIN         = var.WEBSITE_DOMAIN
     ENV                 = "test"
 }
+
+module "route53-A-record" {
+    source                  = "../modules/route53"
+    ROUTE53_HOSTED_ZONE_ID  = var.HOSTED_ZONE
+    SITE_DOMAIN             = var.WEBSITE_DOMAIN
+    DISTRO_DOMAIN_NAME      = module.cloudfront-distro.DISTRO_DOMAIN_NAME
+    CF_HOSTED_ZONE_ID       = module.cloudfront-distro.CF_HOSTED_ZONE_ID
+}

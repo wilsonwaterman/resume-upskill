@@ -70,3 +70,11 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
 output "CF_ARN" {
     value                               = aws_cloudfront_distribution.site-host-distro.arn
 }
+
+output "DISTRO_DOMAIN_NAME" {
+    value                               = aws_cloudfront_distribution.site-host-distro.domain_name
+}
+
+output "CF_HOSTED_ZONE_ID" {
+    value                               = aws_cloudfront_distribution.site-host-distro.hosted_zone_id
+}
