@@ -13,3 +13,7 @@ variable "ACM_TEST_ARN" {
 variable "WEBSITE_DOMAIN" {
     default = "test.wilsonwaterman.com"
 }
+
+variable "HOSTED_ZONE" {
+    default = "Z0687184A3EVRV7AE6DP"
+}
