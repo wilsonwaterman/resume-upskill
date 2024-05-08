@@ -13,8 +13,11 @@ variable "ENV" {
 variable "SITE_DOMAIN" {
 }
 
+variable "CLOUDFRONT_OAC_NAME" {
+}
+
 resource "aws_cloudfront_origin_access_control" "default-cloudfront-oac" {
-    name                                = "s3-OAC"
+    name                                = var.CLOUDFRONT_OAC_NAME
     origin_access_control_origin_type   = "s3"
     signing_behavior                    = "always"
     signing_protocol                    = "sigv4"

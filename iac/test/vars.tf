@@ -17,3 +17,7 @@ variable "WEBSITE_DOMAIN" {
 variable "HOSTED_ZONE" {
     default = "Z0687184A3EVRV7AE6DP"
 }
+
+variable "OAC_NAME" {
+    default = "s3-OAC-TEST"
+}
