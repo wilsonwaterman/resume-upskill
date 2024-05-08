@@ -10,6 +10,7 @@ module "cloudfront-distro" {
     BUCKET_DOMAIN       = module.website-bucket.BUCKET_DOMAIN
     ACM_ARN             = var.ACM_TEST_ARN
     SITE_DOMAIN         = var.WEBSITE_DOMAIN
+    CLOUDFRONT_OAC_NAME = var.OAC_NAME
     ENV                 = "test"
 }
 
