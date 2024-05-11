@@ -2,8 +2,8 @@ name: Deploy Resume Website to Test
 
 on:
   push:
-      branches:
-        - upgrade-porfolio-site
+    branches:
+      - upgrade-porfolio-site
   workflow_dispatch:
 
 jobs:
