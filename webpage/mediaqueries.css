@@ -6,8 +6,9 @@
     .about-containers {
         flex-wrap: wrap;
     }
+    /* Replace experience with projects when you bring back the projects section */
     #contact,
-    #projects {
+    #experience {
         height: fit-content;
     }
 }
