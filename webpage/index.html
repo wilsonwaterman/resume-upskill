@@ -1,98 +1,229 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilson Waterman - Cloud Engineer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mediaqueries.css">
 </head>
 <body>
-    <title>Wilson Waterman - Cloud Engineer</title>
-    <!--<div id="header"></div>
-    <div class="left-margin"></div>
-    <div class="right-margin"></div>-->
-    <div class="resume-body">
-        <div class="title-row">
-            <div class="column-left">
-                <h1>Wilson Waterman</h1>
-                <h2>Cloud Engineer</h2>
+    <nav id="desktop-nav">
+        <div class="logo">Wilson Waterman</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <!-- <li><a href="#projects">Projects</a></li> -->
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="hamburger-nav">
+        <div class="logo">Wilson Waterman</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="column-right">
-                <h3>Address and Contact</h3>
-                PO Box 1747<br>
-                Golden BC<br>
-                V0A1H0<br>
-                647-444-3505<br>
-                wilsonwaterman@gmail.com
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                <!-- <li><a href="#projects" onclick="toggleMenu()">Projects</a></li> -->
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
             </div>
         </div>
-        <div class="content">
-            <hr/>
-            <h3>Profile</h3>
-            <p>
-            I am an experienced and motivated Cloud Engineer with experience working in AWS and Azure, along with leading the staff and direction of a DevOps team.
-            I am passionate about finding efficient solutions to software engineering roadblocks. I have further experience reporting to the executive level,
-            managing vendor relationships and creating dynamic and creative solutions from the ground up. For profile and portfolio information, please see my github and 
-            LinkedIn, included below.
-            </p>
-            <br>
-            <ul>
-                <li><a href="https://github.com/wilsonwaterman" target="_blank">Github</a></li>
-                <li><a href="https://www.linkedin.com/in/wilson-waterman-134374a5/" target="_blank">LinkedIn</a></li>
-            </ul>
-            <br>
-            <h3>Employment History</h3>
-            <p class="job-subheading">DevOps Lead at CampBrain (May 2021 - June 2023)</p>
-            <ul>
-                <li>Produced DevOps roadmap to bring clarity to site reliability and automation initiatives</li>
-                <li>Grew and trained DevOps team, improving the technical staffing and structure</li>
-                <li>Implemented DevOps mindset to further improve team efficiency and reduce manual redundant work</li>
-                <li>Owned Major Incident Response to improve identification and resolution of Sev 1 incidents</li>
-                <li>Coordinated with Operations and Software teams to better align department initiatives, improving team direction and cross-team efficiency</li>
-            </ul>
-            <br>
-            <p class="job-subheading">Application Administrator at Precima (February 2019 - May 2021)</p>
-            <ul>
-                <li>Owned creation of CICD pipelines for web applications, BI tools, ETL processes, and terraform templates</li>
-                <li>Created and configured Linux and Windows infrastructure in AWS and Azure</li>
-                <li>Containerized web app components for use in Kubernetes to improve availability, durability, and operating costs of Precima tools</li>
-            </ul>
-            <br>
-            <p class="job-subheading">Scrum Master and Programmer Analyst at Intact Financial Corp (May 2015 - February 2019)</p>
-            <p>As Scrum Master:</p>
-            <ul>
-                <li>Coached two new agile teams, improving development and release efficiency</li>
-                <li>Guided delivery of new client-facing insurance quote application nationally</li>
-            </ul>
-            <p>As Programmer Analyst:</p>
-            <ul>
-                <li>Lead development effort on Java-based content management web application, improving underwriter user experience</li>
-                <li>Performed A/AA accessibility improvements to Angular-based web app, improving client user experience</li>
-            </ul>
-            <br>
-            <h3>Education</h3>
-            <p class="job-subheading">Bachelors of Applied Science - Mining Engineering</p>
-            <p>Queen's University, Kingston ON, 2010-2014</p>
-            <br>
-            <h3>Certifications</h3>
-            <p class="job-subheading">AWS Certified Solutions Architect - Associate (SAA-C03)</p>
-            <p>Amazon Web Services, expiring 2026</p>
-            <br>
-            <h3>Skills</h3>
+    </nav>
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="./assets/linkedin-headshot-circle.jpg" alt="Wilson Waterman profile picture" />
         </div>
-        <div class="bottom-row">
-            <div class="column-left">
-                <ul>
-                    <li>Bash/PS Scripting</li>
-                    <li>Terraform</li>
-                    <li>Cloud Infrastructure</li>
+        <div class="section__text">
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title">Wilson Waterman</h1>
+            <p class="section__text__p2">Cloud Engineer</p>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onClick="window.open('./assets/WilsonWaterman_Resume_CLOUD.pdf')">Download Resume</button>
+                <button class="btn btn-color-1" onClick="location.href='./#contact'">Contact Info</button>
+            </div>
+            <div id="socials-container">
+                <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon" onClick="location.href='https://www.linkedin.com/in/wilson-waterman-134374a5/'"/>
+                <img src="./assets/github.png" alt="My GitHub profile" class="icon" onClick="location.href='https://github.com/wilsonwaterman'"/>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="./assets/dock-shot.jpg" alt="Profile Picture" class="about-pic"/>
+            </div>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="experience icon" class="icon"/>
+                        <h3>Experience</h3>
+                        <p>9 Year IT Professional<br />5 Years in Cloud and DevOps Engineering</p>
+                    </div>
+                    <div class="details-container">
+                        <img src="./assets/education.png" alt="Education Icon" class="icon"/>
+                        <h3>Education & Certs</h3>
+                        <p>AWS Certified Solutions Architect<br />BSc Mining Engineering</p>
+                    </div>
+                </div>
+                <div class="text-container">
+                    <p>
+                        Hi There! I am a Cloud Engineer with experience managing infrastructure in both AWS and Azure. I have also held DevOps roles, both around managing CICD pipeline automation and managing the staff and direction of a DevOps team. My work has taken me into various sectors, including Insurance, Consumer Insights, and Club Management Software. Beyond work, I try to get outside as much as possible by skiing, surfing, and hiking! Let's build your next solution together.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <img src="./assets/arrow.png" alt="Arrow Icon" class="icon arrow" onClick="location.href='./#experience'"/>
+    </section>
+    <section id="experience">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Experience</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Cloud Engineer</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon"/>
+                            <div>
+                                <h3>AWS</h3>
+                                <p>Experienced</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon"/>
+                            <div>
+                                <h3>Azure</h3>
+                                <p>Experienced</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon"/>
+                            <div>
+                                <h3>Bash & PS Scripting</h3>
+                                <p>Experienced</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon"/>
+                            <div>
+                                <h3>Terraform</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="details-container">
+                    <h2 class="experience-sub-title">DevOps Engineer</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon"/>
+                            <div>
+                                <h3>System Automation</h3>
+                                <p>Experienced</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon"/>
+                            <div>
+                                <h3>CICD</h3>
+                                <p>Experienced</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon"/>
+                            <div>
+                                <h3>Source Control</h3>
+                                <p>Experienced</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon"/>
+                            <div>
+                                <h3>ITSM</h3>
+                                <p>Experienced</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Switch onClick back to #projects when you re-add the section -->
+        <img src="./assets/arrow.png" alt="Arrow Icon" class="icon arrow" onClick="location.href='./#contact'"/>
+    </section>
+    <!-- <section id="projects">
+        <p class="section__text__p1">Browse my recent</p>
+        <h1 class="title">Projects</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/project-1.png" alt="Project 1" class="project-img"/>
+                    </div>
+                    <h2 class="experience-sub-title project-title">Project 1</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onClick="location.href='https://githubproject'">Github</button>
+                        <button class="btn btn-color-2 project-btn" onClick="location.href='https://githubproject'">Live Demo</button>
+                    </div>
+                </div>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/project-2.png" alt="Project 2" class="project-img"/>
+                    </div>
+                    <h2 class="experience-sub-title project-title">Project 2</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onClick="location.href='https://githubproject'">Github</button>
+                        <button class="btn btn-color-2 project-btn" onClick="location.href='https://githubproject'">Live Demo</button>
+                    </div>
+                </div>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/project-3.png" alt="Project 3" class="project-img"/>
+                    </div>
+                    <h2 class="experience-sub-title project-title">Project 3</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onClick="location.href='https://githubproject'">Github</button>
+                        <button class="btn btn-color-2 project-btn" onClick="location.href='https://githubproject'">Live Demo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="./assets/arrow.png" alt="Arrow Icon" class="icon arrow" onClick="location.href='./#contact'"/>
+    </section> -->
+    <section id="contact">
+        <p class="section__text__p1">Get in touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="email icon" class="icon contact-icon email-icon"/>
+                <p><a href="mailto:wilsonwaterman@gmail.com">wilsonwaterman@gmail.com</p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon"/>
+                <p><a href="https://www.linkedin.com/in/wilson-waterman-134374a5/">LinkedIn</a></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <!-- <li><a href="#projects">Projects</a></li> -->
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-            <div class="column-right-la">
-                <ul>
-                    <li>Automation</li>
-                    <li>ITSM</li>
-                    <li>Team Leadership</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--<div id="footer"></div>-->
+        </nav>
+        <p>Copyright &#169; 2024 Wilson Waterman. All Rights Reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>
