@@ -21,3 +21,7 @@ variable "HOSTED_ZONE" {
 variable "OAC_NAME" {
     default = "s3-OAC-TEST"
 }
+
+variable "LOGGING_BUCKET_NAME" {
+    default = "wwaterman-test-bucket-778-logs"
+}

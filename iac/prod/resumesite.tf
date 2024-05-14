@@ -1,7 +1,8 @@
 module "website-bucket" {
-    source      = "../modules/s3"
-    BUCKET_NAME = var.BUCKET_NAME
-    CF_ARN      = module.cloudfront-distro.CF_ARN
+    source          = "../modules/s3"
+    BUCKET_NAME     = var.BUCKET_NAME
+    LOG_BUCKET_NAME = var.LOGGING_BUCKET_NAME
+    CF_ARN          = module.cloudfront-distro.CF_ARN
 }
 
 module "cloudfront-distro" {
