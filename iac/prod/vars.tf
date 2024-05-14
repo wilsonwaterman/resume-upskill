@@ -21,3 +21,7 @@ variable "HOSTED_ZONE" {
 variable "OAC_NAME" {
     default = "s3-OAC-PROD"
 }
+
+variable "LOGGING_BUCKET_NAME" {
+    default = "wilsonwaterman.com-logs"
+}
