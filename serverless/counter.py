@@ -21,7 +21,7 @@ def lambda_handler(event, context):
             response = table.get_item(Key={'id' : 'count'})
             count = response["Item"]["visitor_count"]
         
-            # Increment the count on visit / get
+            # Increment the count on visit / get 
             new_count = str(int(count)+1)
             response = table.update_item(
                 Key={'id': 'count'},
@@ -36,6 +36,7 @@ def lambda_handler(event, context):
             response = table.get_item(Key={'id' : 'count'})
             count = response["Item"]["visitor_count"]
 
+            # Show visitor count result
             return {'Current visitor count':count}
         
     except KeyError:
