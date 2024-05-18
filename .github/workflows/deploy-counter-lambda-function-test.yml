@@ -27,6 +27,5 @@ jobs:
         cd serverless
         zip counter_function.zip counter.py
         echo zip complete
-        aws s3 cp counter_function.zip s3://${{secrets.LAMBDA_FUNCTION_BUCKET_TEST}}
-        echo copy complete complete
-        aws lambda update-function-code --function-name ${{secrets.TEST_FUNCTION_NAME}} --s3-bucket ${{secrets.LAMBDA_FUNCTION_BUCKET_TEST}} --s3-key counter_function.zip
+        echo try direct upload
+        aws lambda update-function-code --function-name ${{secrets.TEST_FUNCTION_NAME}} --zip-file counter_function.zip
