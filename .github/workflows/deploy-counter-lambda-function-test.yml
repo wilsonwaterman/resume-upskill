@@ -28,4 +28,4 @@ jobs:
         zip counter_function.zip counter.py
         echo zip complete
         echo try direct upload
-        aws lambda update-function-code --function-name ${{secrets.TEST_FUNCTION_NAME}} --zip-file counter_function.zip
+        aws lambda update-function-code --function-name ${{secrets.TEST_FUNCTION_NAME}} --zip-file fileb://counter_function.zip
