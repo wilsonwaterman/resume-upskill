@@ -12,3 +12,5 @@ terraform.tfstate*
 *.pub
 *.ppk
 *_ips.txt
+sample.py
+counter.zip
