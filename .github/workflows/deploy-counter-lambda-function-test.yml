@@ -24,6 +24,6 @@ jobs:
     - name: Deploy Function to s3 and Lambda
       run: |
         cd serverless
-        zip -r counter_function.zip .
+        zip counter_function.zip counter.py
         aws s3 sync counter_function.zip s3://${{secrets.LAMBDA_FUNCTION_BUCKET_TEST}}
         aws lambda update-function-code --function name ${{secrets.TEST_FUNCTION_NAME}} --s3-bucket ${{secrets.LAMBDA_FUNCTION_BUCKET_TEST}} --s3-key counter_function.zip
