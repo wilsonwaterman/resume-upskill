@@ -22,7 +22,7 @@ jobs:
         aws-secret-access-key: ${{secrets.AWS_SECRET_KEY}}
         aws-region: us-west-2
 
-    - name: Deploy Function to s3 and Lambda
+    - name: Deploy Function to Lambda
       run: |
         cd serverless
         zip counter_function.zip counter.py
