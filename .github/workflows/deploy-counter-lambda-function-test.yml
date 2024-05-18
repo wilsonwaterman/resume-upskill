@@ -1,0 +1,26 @@
+name: Deploy Counter Lambda Function to Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy_function:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Function
+      uses: actions/checkout@v3
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1.6.1
+      with:
+        aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
+        aws-secret-access-key: ${{secrets.AWS_SECRET_KEY}}
+        aws-region: us-west-2
+
+    - name: Deploy Function to s3 and Lambda
+      run: |
+        cd serverless
+        zip -r counter_function.zip
+        aws s3 sync counter_function.zip s3://${{secrets.LAMBDA_FUNCTION_BUCKET_TEST}}
+        aws lambda update-function-code --function name ${{secrets.TEST_FUNCTION_NAME}} --s3-bucket ${{secrets.LAMBDA_FUNCTION_BUCKET_TEST}} --s3-key counter_function.zip
