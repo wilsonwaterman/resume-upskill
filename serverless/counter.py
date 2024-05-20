@@ -17,20 +17,27 @@ def lambda_handler(event, context):
     # }
 
     try:
-        if event['routeKey'] == "GET /add":
-            response = table.get_item(Key={'id' : 'count'})
-            count = response["Item"]["visitor_count"]
-        
-            # Increment the count on visit / get 
-            new_count = str(int(count)+1)
-            response = table.update_item(
-                Key={'id': 'count'},
-                UpdateExpression='set visitor_count = :c',
-                ExpressionAttributeValues={':c': new_count},
-                ReturnValues='UPDATED_NEW'
-            )
+        if event['routeKey'] == "PUT /add":
+            try:
+                response = table.get_item(Key={'id' : 'count'})
+                count = response["Item"]["visitor_count"]
 
-            return {'Count':new_count}
+                # Increment the count on visit / get
+                new_count = str(int(count)+1)
+                response = table.update_item(
+                    Key={'id': 'count'},
+                    UpdateExpression='set visitor_count = :c',
+                    ExpressionAttributeValues={':c': new_count},
+                    ReturnValues='UPDATED_NEW'
+                )
+
+                return {'Count':new_count}
+
+            except KeyError:
+                body = 'Add visitor_count key and first visit'
+                # Below code will add the new entry with id count and value called visitor name, value 1 as a string
+                table.put_item(Item={'id' : 'count','visitor_count' : '1'})
+                return json.dumps(body)
         
         elif event['routeKey'] == "GET /visitors":
             response = table.get_item(Key={'id' : 'count'})
