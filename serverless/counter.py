@@ -10,6 +10,7 @@ tableName = 'site-visitor-count-table'
 
 def lambda_handler(event, context):
     print(event)
+    statusCode = 200
 
     try:
         if event['routeKey'] == "PUT /add":
