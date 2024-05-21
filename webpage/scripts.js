@@ -6,7 +6,7 @@ function toggleMenu() {
 }
 
 function incrementVisitorCounter() {
-    fetch('https://twktoelzm7.execute-api.us-west-2.amazonaws.com/add')
+    fetch('https://bedvhlyplb.execute-api.us-west-2.amazonaws.com/add')
     .then(response => response.json())
     .then((data) => {
         document.getElementById('visitor_counter').innerText = data.Count

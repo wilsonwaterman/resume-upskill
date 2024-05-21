@@ -10,14 +10,10 @@ tableName = 'site-visitor-count-table'
 
 def lambda_handler(event, context):
     print(event)
-    # body={}
-    # statusCode = 200
-    # headers = {
-    #     "Content-Type": "application/json"
-    # }
 
     try:
         if event['routeKey'] == "PUT /add":
+            
             try:
                 response = table.get_item(Key={'id' : 'count'})
                 count = response["Item"]["visitor_count"]
