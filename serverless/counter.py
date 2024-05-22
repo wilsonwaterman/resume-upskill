@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     statusCode = 200
     headers = {
         "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://test.wilsonwaterman.com',
         'Access-Control-Allow-Methods': 'OPTIONS,PUT'
     }
 
