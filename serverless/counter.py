@@ -14,7 +14,8 @@ def lambda_handler(event, context):
     headers = {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "OPTIONS,PUT"
+        "Access-Control-Allow-Methods": "OPTIONS,PUT",
+        "Access-Control-Allow-Headers": "*"
     }
 
     try:
