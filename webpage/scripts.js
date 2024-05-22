@@ -9,7 +9,11 @@ function incrementVisitorCounter() {
 
     const requestOptions = {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'OPTIONS,PUT'
+        },
         body: JSON.stringify({ title: 'TEST' })
     };
 
