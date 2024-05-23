@@ -37,10 +37,16 @@ def lambda_handler(event, context):
                 return {'Count':new_count}
 
             except KeyError:
+                statusCode = 200
                 body = 'Add visitor_count key and first visit'
                 # Below code will add the new entry with id count and value called visitor name, value 1 as a string
                 table.put_item(Item={'id' : 'count','visitor_count' : '1'})
-                return json.dumps(body)
+                # return json.dumps(body)
+                return {
+                    statusCode,
+                    body,
+                    headers
+                }
         
         elif event['routeKey'] == "GET /visitors":
             response = table.get_item(Key={'id' : 'count'})
@@ -53,11 +59,23 @@ def lambda_handler(event, context):
         if statusCode == 400:
             statusCode = 400
             body = 'Unsupported route: ' + event['routeKey']
-            return json.dumps(body) 
+            return {
+                    statusCode,
+                    body,
+                    headers
+                } 
         elif statusCode == 500:
             statusCode = 500
             body = 'Internal Error, gotta fix the gateway for: ' + event['routeKey']
-            return json.dumps(body)
+            return {
+                    statusCode,
+                    body,
+                    headers
+                }
         else:
             body = 'No idea what the fuck is wrong with this request'
-            return json.dumps(body)
+            return {
+                    statusCode,
+                    body,
+                    headers
+                }
