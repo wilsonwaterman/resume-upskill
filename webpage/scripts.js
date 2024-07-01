@@ -13,7 +13,7 @@ function incrementVisitorCounter() {
         body: JSON.stringify({ title: 'TEST' })
     };
 
-    fetch('https://q3id98mx73.execute-api.us-west-2.amazonaws.com/add', requestOptions)
+    fetch('https://u4baeh4ebh.execute-api.us-west-2.amazonaws.com/add', requestOptions)
     .then(response => response.json())
     .then((data) => {
         document.getElementById('visitor_counter').innerText = data.Count
