@@ -2,10 +2,10 @@ import json
 import boto3
 from decimal import Decimal
 
-client = boto3.client('dynamodb')
+# client = boto3.client('dynamodb')
 dynamodb = boto3.resource("dynamodb")
-table = dynamodb.Table('site-visitor-count-table')
 tableName = 'site-visitor-count-table'
+table = dynamodb.Table(tableName)
 
 
 def lambda_handler(event, context):
@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     statusCode = 200
     headers = {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://test.wilsonwaterman.com",
         "Access-Control-Allow-Methods": "OPTIONS,PUT",
         "Access-Control-Allow-Headers": "*"
     }
