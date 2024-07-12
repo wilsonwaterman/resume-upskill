@@ -22,3 +22,13 @@ module "route53-A-record" {
     DISTRO_DOMAIN_NAME      = module.cloudfront-distro.DISTRO_DOMAIN_NAME
     CF_HOSTED_ZONE_ID       = module.cloudfront-distro.CF_HOSTED_ZONE_ID
 }
+
+module "dynamodb-visitor-count-table" {
+    source              = "../modules/dynamodb"
+    TABLE_NAME          = var.TABLE_NAME
+}
+
+module "visitor-count-function" {
+    source                  = "../modules/lambda"
+    LAMBDA_FUNCTION_NAME    = var.LAMBDA_FUNCTION_NAME
+}

@@ -25,3 +25,11 @@ variable "OAC_NAME" {
 variable "LOGGING_BUCKET_NAME" {
     default = "wwaterman-test-bucket-778-logs"
 }
+
+variable "TABLE_NAME" {
+    default = "site-visitor-count-table"
+}
+
+variable "LAMBDA_FUNCTION_NAME" {
+    default = "visitor-count-function"
+}
