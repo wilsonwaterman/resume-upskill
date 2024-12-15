@@ -54,7 +54,7 @@ resource "aws_cloudfront_distribution" "site-host-distro" {
     restrictions {
         geo_restriction {
             restriction_type            = "whitelist"
-            locations                   = ["US","CA","GB"]
+            locations                   = ["US","CA","GB","PL"]
         }
     }
 
