@@ -11,6 +11,9 @@ The goal of this project is to be the home of my technical profile. Today, my si
 
 # Release Notes
 
+### 2024/12/14
+- Whitelist Poland in CF distro
+
 ### 2024/05/14
 - Enabled Server Access Logging and created associated infrastructure in AWS (s3)
 
