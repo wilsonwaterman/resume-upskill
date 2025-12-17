@@ -7,7 +7,7 @@ variable "BUCKET_NAME" {
 }
 
 variable "ACM_TEST_ARN" {
-    default = "arn:aws:acm:us-east-1:649148530717:certificate/7eaf2f1c-15df-42d6-988f-0ba3fc401123"
+    default = "arn:aws:acm:us-east-1:649148530717:certificate/34997f00-c6f2-497f-ab38-ada25de66207"
 }
 
 variable "WEBSITE_DOMAIN" {
